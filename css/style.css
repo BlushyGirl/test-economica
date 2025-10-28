@@ -30,6 +30,10 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     padding: 1rem 0;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 .nav-container {
@@ -45,12 +49,21 @@ body {
     font-size: 1.8rem;
     font-weight: bold;
     color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 2rem;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
     gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-menu a {
@@ -64,6 +77,117 @@ body {
 .nav-menu a:hover,
 .nav-menu a.active {
     background-color: rgba(255,255,255,0.2);
+}
+/* Альтернативный вариант - через паддинг body */
+body {
+    padding-top: 65px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 70px;
+    }
+}
+/* Стили для кнопки мобильного меню */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    background: none;
+    border: none;
+}
+
+.mobile-menu-btn span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        gap: 0;
+        transition: all 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Анимация бургер-меню в крестик */
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .logo-icon {
+        font-size: 1.7rem;
+    }
+}
+
+/* Добавьте отступ для основного контента */
+main {
+    margin-top: 80px;
+}
+
+@media (max-width: 768px) {
+    main {
+        margin-top: 70px;
+    }
 }
 
 /* Герой секция */
@@ -7760,5 +7884,642 @@ body {
     .stat-label {
         font-size: 0.55rem;
         letter-spacing: 0.1px;
+    }
+}
+
+/* Мобильная адаптация для игр */
+@media (max-width: 768px) {
+    /* Карточки игр на главной */
+    .games-preview-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .game-preview-card {
+        padding: 1.5rem;
+    }
+
+    .game-preview-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Детальные карточки игр */
+    .games-details-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .game-detail-card {
+        padding: 1.5rem;
+    }
+
+    .game-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .game-main-icon {
+        font-size: 3rem;
+    }
+
+    .game-title-section h3 {
+        font-size: 1.4rem;
+    }
+
+    .game-tags {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .game-tag {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    /* Статистика игр */
+    .game-stats-detailed {
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+
+    .stat-item {
+        flex: 1;
+        text-align: center;
+        padding: 0.8rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+    }
+
+    /* Особенности игр */
+    .game-features h4 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .features-list {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .feature-item {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .feature-icon {
+        font-size: 1.2rem;
+        margin-right: 0.5rem;
+    }
+
+    /* Кнопки */
+    .btn-large {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .btn-icon {
+        font-size: 1.2rem;
+        margin-right: 0.5rem;
+    }
+
+    /* Контейнеры игр */
+    .game-container {
+        padding: 1rem;
+    }
+
+    .game-header-bar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .game-back,
+    .game-actions {
+        width: 100%;
+    }
+
+    .btn-back {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .game-title-bar {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .game-icon-small {
+        font-size: 2.5rem;
+    }
+
+    .game-title-bar h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Контент игр */
+    .game-content-area {
+        padding: 1rem;
+    }
+
+    /* Адаптация для конкретных игр */
+    
+    /* Квиз */
+    .quiz-option {
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .option-letter {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.9rem;
+    }
+
+    /* Термины */
+    .terms-options {
+        grid-template-columns: 1fr;
+    }
+
+    .term-option {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Симулятор */
+    .scenario-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .step-item {
+        padding: 1rem;
+    }
+
+    .step-option {
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    /* Планировщик бюджета */
+    .policies-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .policy-checkbox {
+        padding: 1rem;
+    }
+
+    .policy-info strong {
+        font-size: 1rem;
+    }
+
+    .policy-info small {
+        font-size: 0.8rem;
+    }
+
+    /* Результаты */
+    .score-breakdown {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .score-card {
+        padding: 1.5rem;
+    }
+
+    .policies-list {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .policy-item {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    /* Финальные результаты */
+    .profiles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-result {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Еще более мелкие экраны */
+    .game-detail-card {
+        padding: 1rem;
+    }
+
+    .game-main-icon {
+        font-size: 2.5rem;
+    }
+
+    .game-title-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .game-description p {
+        font-size: 0.9rem;
+    }
+
+    .stat-value {
+        font-size: 1.3rem;
+    }
+
+    .btn-large {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Хедер игр */
+    .games-hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .games-hero-content p {
+        font-size: 1rem;
+    }
+
+    .games-hero-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* Контейнеры игр */
+    .game-container {
+        padding: 0.5rem;
+    }
+
+    .game-header-bar {
+        padding: 0.8rem;
+    }
+
+    .game-content-area {
+        padding: 0.5rem;
+    }
+
+    /* Кнопки в играх */
+    .btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .btn-outline {
+        padding: 0.7rem 1rem;
+    }
+
+    /* Прогресс-бары */
+    .progress-bar {
+        height: 6px;
+    }
+
+    .quiz-progress,
+    .profile-progress,
+    .step-progress {
+        font-size: 0.8rem;
+    }
+}
+
+/* Дополнительные улучшения для тач-устройств */
+@media (hover: none) and (pointer: coarse) {
+    .btn,
+    .quiz-option,
+    .term-option,
+    .step-option,
+    .policy-checkbox {
+        min-height: 44px;
+        padding: 1rem;
+    }
+
+    .btn-back {
+        min-height: 44px;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        transform: scale(1.2);
+        margin-right: 0.5rem;
+    }
+}
+
+/* Портретная ориентация */
+@media (max-width: 768px) and (orientation: portrait) {
+    .games-hero-visual {
+        display: none;
+    }
+    
+    .games-hero-content {
+        text-align: center;
+    }
+}
+
+/* Ландшафтная ориентация для мобильных */
+@media (max-width: 900px) and (orientation: landscape) {
+    .games-details-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .game-detail-card {
+        padding: 1rem;
+    }
+    
+    .game-stats-detailed {
+        flex-direction: row;
+    }
+}
+
+/* Плавные переходы */
+.game-detail-card,
+.btn,
+.quiz-option,
+.term-option,
+.step-option,
+.policy-checkbox {
+    transition: all 0.3s ease;
+}
+
+/* Улучшение читаемости на маленьких экранах */
+@media (max-width: 768px) {
+    .game-description p {
+        line-height: 1.5;
+    }
+    
+    .features-list {
+        line-height: 1.4;
+    }
+    
+    .policy-info {
+        line-height: 1.4;
+    }
+}
+
+/* Оптимизация для очень маленьких экранов */
+@media (max-width: 360px) {
+    .game-detail-card {
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+    
+    .game-header {
+        gap: 0.8rem;
+    }
+    
+    .game-main-icon {
+        font-size: 2rem;
+    }
+    
+    .game-title-section h3 {
+        font-size: 1.1rem;
+    }
+    
+    .btn-large {
+        font-size: 0.85rem;
+        padding: 0.7rem 0.9rem;
+    }
+}
+
+.step-feedback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.feedback-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: slideUp 0.3s ease-out;
+}
+
+.feedback-card.correct {
+    border-left: 4px solid #28a745;
+}
+
+.feedback-card.incorrect {
+    border-left: 4px solid #dc3545;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 480px) {
+    .step-feedback {
+        padding: 15px;
+    }
+    
+    .feedback-card {
+        padding: 20px;
+        max-width: 100%;
+        margin: 0 10px;
+    }
+    
+    .feedback-card h4 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .feedback-card p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+.answer-explanation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.explanation-content {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease-out;
+}
+
+.explanation-content.correct {
+    border-left: 4px solid #28a745;
+}
+
+.explanation-content.incorrect {
+    border-left: 4px solid #dc3545;
+}
+
+.explanation-content h4 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.explanation-content p {
+    margin-bottom: 12px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.explanation-content strong {
+    color: #333;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 480px) {
+    .answer-explanation {
+        padding: 15px;
+    }
+    
+    .explanation-content {
+        padding: 20px;
+        max-width: 100%;
+        margin: 0 10px;
+    }
+    
+    .explanation-content h4 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+    }
+    
+    .explanation-content p {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 360px) {
+    .explanation-content {
+        padding: 15px;
+    }
+    
+    .explanation-content h4 {
+        font-size: 1.1rem;
+    }
+    
+    .explanation-content p {
+        font-size: 0.85rem;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mobile-menu-btn {
+    display: none;
+    cursor: pointer;
+    padding: 15px;
+    background: none;
+    border: none;
+    position: relative;
+    z-index: 1001;
+    width: 44px;
+    height: 44px;
+    margin-right: -5px; /* Добавляем немного отрицательного отступа */
+}
+
+.mobile-menu-btn span {
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background: white;
+    left: 7px;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.mobile-menu-btn span:nth-child(1) {
+    top: 15px;
+}
+
+.mobile-menu-btn span:nth-child(2) {
+    top: 21px;
+}
+
+.mobile-menu-btn span:nth-child(3) {
+    top: 27px;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    /* Анимация с абсолютным позиционированием */
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(45deg);
+        top: 21px;
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 21px;
     }
 }
