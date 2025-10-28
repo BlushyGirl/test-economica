@@ -281,22 +281,22 @@ function initTermsGame() {
             option.disabled = true;
         });
 
-        // Показываем объяснение
-        const explanationDiv = document.createElement('div');
-        explanationDiv.className = 'answer-explanation';
-        explanationDiv.innerHTML = `
-            <div class="explanation-content ${selectedTerm === correctTerm ? 'correct' : 'incorrect'}">
-                <h4>${selectedTerm === correctTerm ? '✅ Правильно!' : '❌ Неправильно'}</h4>
-                <p><strong>Правильный ответ:</strong> ${correctTerm}</p>
-                <p><strong>Определение:</strong> ${round.correctDefinition}</p>
-                ${round.example ? `<p><strong>Пример:</strong> ${round.example}</p>` : ''}
-                <button class="btn btn-primary" onclick="nextTermRound()">Продолжить</button>
-            </div>
-        `;
+            // Показываем объяснение
+            const explanationDiv = document.createElement('div');
+            explanationDiv.className = 'answer-explanation';
+            explanationDiv.innerHTML = `
+                <div class="explanation-content ${selectedTerm === correctTerm ? 'correct' : 'incorrect'}">
+                    <h4>${selectedTerm === correctTerm ? '✅ Правильно!' : '❌ Неправильно'}</h4>
+                    <p><strong>Правильный ответ:</strong> ${correctTerm}</p>
+                    <p><strong>Определение:</strong> ${round.correctDefinition}</p>
+                    ${round.example ? `<p><strong>Пример:</strong> ${round.example}</p>` : ''}
+                    <button class="btn btn-primary" onclick="nextTermRound()">Продолжить</button>
+                </div>
+            `;
 
-        if (selectedTerm === correctTerm) {
-            score++;
-        }
+            if (selectedTerm === correctTerm) {
+                score++;
+            }
 
         // Обновляем счет
         document.querySelector('.current-score').innerHTML = 
