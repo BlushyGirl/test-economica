@@ -48,18 +48,18 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    height: 50px; /* Фиксированная высота для логотипа */
+    gap: 15px;
+    height: 70px;
 }
 
 .logo-icon {
-    width: 50px; 
-    height: 100px; /* Делаем высоту равной ширине для квадратного лого */
+    width: 200px; /* Широкая для текста */
+    height: 50px; /* Невысокая */
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;    
-    object-fit: contain; /* Сохраняет пропорции, помещая изображение в контейнер */
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
 .nav-menu {
