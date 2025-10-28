@@ -426,22 +426,32 @@ function initQuiz() {
     }
 
     window.showAnswers = function() {
-        let answersHTML = '<div class="answers-review"><h4>Подробный разбор ответов:</h4>';
-        
-        userAnswers.forEach((answer, index) => {
-            answersHTML += `
-                <div class="answer-item ${answer.isCorrect ? 'correct' : 'incorrect'}">
-                    <h5>Вопрос ${index + 1}: ${answer.question}</h5>
-                    <p><strong>Ваш ответ:</strong> ${answer.userAnswer}</p>
-                    <p><strong>Правильный ответ:</strong> ${answer.correctAnswer}</p>
-                    ${!answer.isCorrect ? '<p class="answer-explanation">Изучите этот вопрос в разделе теории</p>' : ''}
-                </div>
-            `;
-        });
-        
-        answersHTML += '</div>';
-        quizContent.innerHTML = answersHTML + `<button class="btn btn-primary" onclick="restartQuiz()">Пройти еще раз</button>`;
-    };
+    let answersHTML = '<div class="answers-review"><h4>Подробный разбор ответов:</h4>';
+    
+    userAnswers.forEach((answer, index) => {
+        answersHTML += `
+            <div class="answer-item ${answer.isCorrect ? 'correct' : 'incorrect'}">
+                <h5>Вопрос ${index + 1}: ${answer.question}</h5>
+                <p><strong>Ваш ответ:</strong> ${answer.userAnswer}</p>
+                <p><strong>Правильный ответ:</strong> ${answer.correctAnswer}</p>
+                ${!answer.isCorrect ? '<p class="answer-explanation">Изучите этот вопрос в разделе теории</p>' : ''}
+            </div>
+        `;
+    });
+    
+    answersHTML += '</div>';
+    
+    // Вставляем в game-content-area
+    const quizContent = document.getElementById('quiz-content');
+    quizContent.innerHTML = `
+        <div class="quiz-results-container">
+            ${answersHTML}
+            <div class="quiz-actions">
+                <button class="btn btn-primary" onclick="restartQuiz()">Пройти еще раз</button>
+            </div>
+        </div>
+    `;
+};
 
     window.restartQuiz = function() {
         currentQuestion = 0;
