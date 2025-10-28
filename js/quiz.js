@@ -425,10 +425,9 @@ function initQuiz() {
         return '#' + color.replace(/^#/, '').replace(/../g, color => ('0'+Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
     }
 
-    window.showAnswers = function() {
-    const quizContent = document.getElementById('quiz-content');
+window.showAnswers = function() {
+    let answersHTML = '<div class="answers-review"><h4>Подробный разбор ответов:</h4>';
     
-    let answersHTML = '';
     userAnswers.forEach((answer, index) => {
         answersHTML += `
             <div class="answer-item ${answer.isCorrect ? 'correct' : 'incorrect'}">
@@ -440,16 +439,15 @@ function initQuiz() {
         `;
     });
     
+    answersHTML += '</div>';
+    
+    // Вставляем в game-content-area
+    const quizContent = document.getElementById('quiz-content');
     quizContent.innerHTML = `
-        <div style="width: 100%; max-width: 800px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
-            <div class="answers-review">
-                <h4>Подробный разбор ответов:</h4>
-                ${answersHTML}
-            </div>
-            <div style="text-align: center; margin-top: 30px; width: 100%;">
-                <button class="btn btn-primary" onclick="restartQuiz()" style="display: inline-block; min-width: 200px; padding: 12px 30px;">
-                    Пройти еще раз
-                </button>
+        <div class="quiz-results-container">
+            ${answersHTML}
+            <div class="quiz-actions">
+                <button class="btn btn-primary" onclick="restartQuiz()">Пройти еще раз</button>
             </div>
         </div>
     `;
