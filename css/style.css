@@ -8552,10 +8552,6 @@ main {
     gap: 10px;
 }
 
-.logo-icon {
-    font-size: 2rem;
-}
-
 .nav-menu {
     display: flex;
     list-style: none;
