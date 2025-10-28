@@ -62,6 +62,12 @@ body {
     height: 100%; /* Занимает всю высоту контейнера */
     object-fit: contain; /* Сохраняет пропорции */
 }
+.logo-text {
+    font-size: 95px;
+    font-weight: bold;
+    color: #000000; /* или нужный вам цвет */
+    font-family: Arial, sans-serif; /* или нужный шрифт */
+}
 
 .nav-menu {
     display: flex;
