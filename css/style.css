@@ -176,7 +176,7 @@ body {
     }
     
     .logo-icon {
-        font-size: 1.7rem;
+        width: 10px; height: 5px
     }
 }
 
