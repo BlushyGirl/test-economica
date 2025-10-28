@@ -232,3 +232,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Инициализация мобильного меню
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (mobileBtn) {
+        mobileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+            mobileBtn.classList.toggle('active');
+            
+            // Блокировка прокрутки при открытом меню
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Закрытие меню при клике на ссылку
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                mobileBtn.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Закрытие меню при клике вне его
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-container') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileBtn.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Закрытие меню при изменении размера окна (на десктоп)
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileBtn.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
