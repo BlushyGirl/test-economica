@@ -170,7 +170,7 @@ body {
 /* Для очень маленьких экранов */
 @media (max-width: 480px) {
     .logo {
-        font-size: 1.5rem;
+        width: 15px; height: 10px
     }
     
     .logo-icon {
