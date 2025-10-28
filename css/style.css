@@ -46,9 +46,7 @@ body {
 }
 
 .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white;
+    width: 50px; height: 10px
     display: flex;
     align-items: center;
     gap: 10px;
@@ -8541,15 +8539,6 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .nav-menu {
