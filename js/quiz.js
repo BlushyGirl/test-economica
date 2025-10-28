@@ -413,7 +413,6 @@ function initQuiz() {
                 <p class="result-message">${message}</p>
                 
                 <div class="results-details">
-                    <button class="btn btn-secondary" onclick="showAnswers()">Посмотреть ответы</button>
                     <button class="btn btn-primary" onclick="restartQuiz()">Пройти еще раз</button>
                 </div>
             </div>
